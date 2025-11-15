@@ -1,0 +1,7 @@
+{
+  "message": "Computer will %s automatically in %s seconds",
+  "action.shutdown": "shut down",
+  "action.restart": "restart",
+  "hover": "Click to cancel operation",
+  "cancelled": "%s cancelled"
+}

@@ -1,0 +1,7 @@
+{
+  "message": "计算机将在 %s 秒后自动%s",
+  "action.shutdown": "关机",
+  "action.restart": "重启",
+  "hover": "点击取消操作",
+  "cancelled": "已取消%s"
+}
