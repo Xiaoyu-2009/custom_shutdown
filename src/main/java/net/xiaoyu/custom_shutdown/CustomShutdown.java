@@ -44,17 +44,23 @@ public class CustomShutdown {
             }
             
             if (countdown == 0) {
+                // 在关机/重启之前保存所有
+                if (ServerLifecycleHooks.getCurrentServer() != null) {
+                    ServerLifecycleHooks.getCurrentServer().saveEverything(true, true, true);
+                    LOGGER.info("Saving all data before shutdown/restart");
+                }
+                
                 try {
                     boolean useRestart = Config.COMMON.useRestart.get();
                     
                     if (useRestart) {
                         // 重启
-                        LOGGER.info("Executing restart command");
                         Runtime.getRuntime().exec("shutdown -r -t 0");
+                        LOGGER.info("Executing restart command");
                     } else {
                         // 关机
-                        LOGGER.info("Executing shutdown command");
                         Runtime.getRuntime().exec("shutdown -s -t 0");
+                        LOGGER.info("Executing shutdown command");
                     }
                 } catch (IOException e) {
                     LOGGER.error("Failed to execute shutdown/restart command", e);
